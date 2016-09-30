@@ -1,0 +1,20 @@
+Each of the two crawling method "focused" and "bfs" has one .py script.
+In each script, there is one crawler class to define the crawler.
+Within the class, there is a "googleSearch" method to perform the initial search using the google engine. This method uses the "google" library.
+The focused crawler uses a priority queue to store the crawled urls and their priority score as tuples.
+The BFS crawler uses a queue to store the crawled urls.
+The "getRootUrl" method extracts the root url. The idea of this method is adopted from online reference.
+The "canFetchUrl" method reads the content of "robots.txt" if there is one, and determine if the url can be crawled.
+The "isValidUrl" method excludes a bunch of urls that contain keywords in a blacklist.
+The "calculatePriority" method calculates the priority of the crawled page and sets it to the urls crawled from this page.
+The "getUrlPriority" method calculates the priority of the url on the basis of the score from the page where it is crawled from. If the url contain keyword(s), addtional score will be added.
+The "getUrls" method gets the urls from the page.
+The total number of urls to crawl and the maximum number of the urls to crawl from domain can be set as parameters.
+The crawled urls and their root urls are stored in set and dictionary, in order to remove duplicate and count crawling times.
+Only relevant pages are stored.
+The harvest rate is calculated by dividing the number of relevant pages by the total number of http requests.
+Several external libraries including "google", "lxml", "robotparser" are used.
+The definition of "Harvest rate" is: number of relevant pages crawled / number of http requests
+
+Problems:
+Sometimes the crawler could not get enough pages.
